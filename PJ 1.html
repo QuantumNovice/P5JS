@@ -1,0 +1,35 @@
+<html>
+<head>
+
+<style>
+
+</style>
+
+
+</head>
+<body>
+
+    <canvas id="screen"  width="640" height="380"></canvas>
+
+<script>
+
+var canvas = document.getElementById("screen");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+var ctx = canvas.getContext("2d");
+
+function draw()
+{            
+    for (i = 0; i < (innerWidth+innerHeight)/2; i+=20) {
+        ctx.strokeStyle = 'rgb(70, 70, 255)';
+        ctx.arc(canvas.width/2, canvas.height/2, i, 0, 2*Math.PI);
+    }
+    ctx.stroke();
+}
+
+draw();
+</script>
+    </html>
+
+</body>
+
