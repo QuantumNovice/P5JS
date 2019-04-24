@@ -1,0 +1,68 @@
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.js"></script>
+<script>
+
+let xspacing = 16; // Distance between each horizontal location
+let w; // Width of entire wave
+let theta = 0.0; // Start angle at 0
+let amplitude = 75.0; // Height of wave
+let period = 500.0; // How many pixels before the wave repeats
+let dx; // Value for incrementing x
+let yvalues; // Using an array to store height values for the wave
+let f_x = 'sin(x)';
+
+function greet(){
+  const name = input.value();
+  f_x = name;
+}
+
+function setup() {
+  createCanvas(710, 400);
+  w = width + 16;
+  dx = (TWO_PI / period) * xspacing;
+  yvalues = new Array(floor(w / xspacing));
+  input = createInput();
+  input.position(20, 65);
+
+  button = createButton('Use');
+  button.position(input.x + input.width, 65);
+  button.mousePressed(greet);
+
+  greeting = createElement('h2', 'what is your name?');
+  greeting.position(20, 5);
+
+  textAlign(CENTER);
+  textSize(50);
+
+}
+
+function draw() {
+  background(0);
+  calcWave();
+  renderWave();
+}
+
+function calcWave() {
+  // Increment theta (try different values for
+  // 'angular velocity' here)
+  theta += 0.02;
+
+  // For every x value, calculate a y value with sine function
+  let x = theta;
+  for (let i = 0; i < yvalues.length; i++) {
+    yvalues[i] = eval(f_x) * amplitude;
+    x += dx;
+  }
+}
+
+function renderWave() {
+  noStroke();
+  fill(255);
+  // A simple way to draw the wave with an ellipse at each location
+  for (let x = 0; x < yvalues.length; x++) {
+    ellipse(x * xspacing, height / 2 + yvalues[x], 16, 16);
+  }
+}
+</script>
+</html>
