@@ -1,0 +1,18 @@
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  fill(255, 124, 124);
+  stroke(255, 124, 124);
+  for (y=10; y<=height; y+=30){
+    
+    for (x=10; x <= width; x+=30){
+
+      circle(x+random(-2, 2), y+random(-2, 2), 4);
+      
+    }
+  }
+  
+}
