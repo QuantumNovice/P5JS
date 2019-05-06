@@ -1,0 +1,16 @@
+function setup() {
+  createCanvas(400, 400);
+}
+
+t_st = 200
+P_s = 100
+t = 0
+function draw() {
+  translate(width/2, height/2);
+  //background(220);
+  noFill()
+  stroke(255, 0, 0);
+  P = P_s*exp(-t/t_st)*(1- t/t_st)
+  t += 10
+  circle(0,0,150-P);
+}
